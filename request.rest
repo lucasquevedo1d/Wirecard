@@ -1,0 +1,47 @@
+
+### Criar o cliente
+POST http://localhost:3003/users/createClient
+Content-Type: application/json
+
+{
+    "name":"loiva",
+    "email":"loiva@lucas.com",
+    "password":"123456",
+    "cpf":"888.111.111.11"
+}
+
+### Login
+# @name login
+GET http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+
+    "email":"loiva@lucas.com",
+    "password":"123456"
+
+}
+
+### Criar forma de pagamentto
+POST http://localhost:3003/users/createPayment
+Authorization: {{login.response.body.result}}
+Content-Type: application/json
+
+{
+   "clientId": "123456789",
+    "amount": 3000,
+    "type":"credit card",
+    "cardHolderName":"joão",
+    "cardNumber":"5916 6705 5586 8558",
+    "cardExpirationDate":"09/2022",
+    "cardCvv": "500"
+}
+
+### Buscar pagamento
+GET http://localhost:3003/users/getPayment
+Authorization: {{login.response.body.result}}
+Content-Type: application/json
+
+{
+    "id":"c269c414-7fae-4210-8f06-4165bbb20df9"
+}
